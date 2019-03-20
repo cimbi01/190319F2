@@ -4,20 +4,37 @@ using System.Text;
 
 namespace _190319F2
 {
-    class Teglalap : ISikidom
+    class Teglalap : ISikidom, IHasonlithato
     {
-        public double Kerulet()
+        private readonly double oldal1, oldal2;
+        public Teglalap() { Beolvas(); }
+        public void Beolvas()
         {
             double oldal1 = AdatBekeres.EllenorzottBekeres<double>("Add meg a téglalap egyik oldalát!");
             double oldal2 = AdatBekeres.EllenorzottBekeres<double>("Add meg a téglalap másik oldalát!");
+        }
+        public double Kerulet()
+        {
             return (oldal1 + oldal2) * 2;
         }
 
         public double Terulet()
         {
-            double oldal1 = AdatBekeres.EllenorzottBekeres<double>("Add meg a téglalap egyik oldalát!");
-            double oldal2 = AdatBekeres.EllenorzottBekeres<double>("Add meg a téglalap másik oldalát!");
             return (oldal1 * oldal2);
+        }
+        public bool Kisebb(int elem)
+        {
+            return elem < Terulet();
+        }
+
+        public bool Nagyobb(int elem)
+        {
+            return elem < Terulet();
+        }
+        public override string ToString()
+        {
+            Console.WriteLine("Síkidom: {0} Kerulet: {1} Terulet: {1}", "Téglalap", Kerulet(), Terulet());
+            return base.ToString();
         }
     }
 }
