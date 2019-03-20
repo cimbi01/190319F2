@@ -9,14 +9,28 @@ namespace _190319F2
         private readonly double[] oldalak = new double[3];
         private double magassag;
         private int magassagoldalszam;
-        public Haromszog(){ this.Beolvas(); }
-        private void Beolvas()
+        public Haromszog(bool random = true){ this.Beolvas(random); }
+        private void Beolvas(bool random)
         {
-            oldalak[0] = AdatBekeres.EllenorzottBekeres<double>("Add meg a háromszög egyik oldalát!");
-            oldalak[1] = AdatBekeres.EllenorzottBekeres<double>("Add meg a háromszög másik oldalát!");
-            oldalak[2] = AdatBekeres.EllenorzottBekeres<double>("Add meg a háromszög harmadik oldalát!");
-            magassagoldalszam = AdatBekeres.EllenorzottBekeres<int>("Add meg hogy a magasság amit megfogsz adni a háromszög melyik oldalához tartozik!");
-            magassag = AdatBekeres.EllenorzottBekeres<double>("Add meg a háromszög 1. oldalhoz tartozó magasságát!");
+            if (random)
+            {
+                Random rnd = new Random();
+                oldalak[0] = rnd.NextDouble()*10;
+                oldalak[1] = rnd.NextDouble() * 10;
+                oldalak[2] = rnd.NextDouble() * 10;
+                // LEGYEN > 0 && < 4
+                magassagoldalszam = rnd.Next(1, 4);
+                magassag = rnd.NextDouble() * 10;
+            }
+            else
+            {
+                oldalak[0] = AdatBekeres.EllenorzottBekeres<double>("Add meg a háromszög egyik oldalát!");
+                oldalak[1] = AdatBekeres.EllenorzottBekeres<double>("Add meg a háromszög másik oldalát!");
+                oldalak[2] = AdatBekeres.EllenorzottBekeres<double>("Add meg a háromszög harmadik oldalát!");
+                // LEGYEN > 0 && < 4
+                magassagoldalszam = AdatBekeres.EllenorzottBekeres<int>("Add meg hogy a magasság amit megfogsz adni a háromszög melyik oldalához tartozik!");
+                magassag = AdatBekeres.EllenorzottBekeres<double>("Add meg a háromszög " + magassagoldalszam + " oldalhoz tartozó magasságát!");
+            }
         }
         public double Kerulet()
         {
@@ -29,19 +43,17 @@ namespace _190319F2
             double terulet = oldalak[magassagoldalszam-1] *  magassag /  2;
             return terulet;
         }
-
-        public bool Nagyobb(int elem)
+        public bool Kisebb(double elem)
         {
-            return elem < Terulet();
+            return elem < Program.MIN;
         }
-
-        public bool Kisebb(int elem)
+        public bool Nagyobb(double elem)
         {
-            return elem > Terulet();
+            return elem > Program.MAX;
         }
         public override string ToString()
         {
-            Console.WriteLine("Síkidom: {0} Kerulet: {1} Terulet: {1}", "Háromszög", Kerulet(), Terulet());
+            Console.WriteLine("Síkidom: {0} Kerulet: {1} Terulet: {2}", "Háromszög", Kerulet(), Terulet());
             return base.ToString();
         }
     }

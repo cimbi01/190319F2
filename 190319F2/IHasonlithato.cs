@@ -6,7 +6,9 @@ namespace _190319F2
 {
     interface IHasonlithato
     {
-        bool Nagyobb(int elem);
-        bool Kisebb(int elem);
+        // felesleges az elem, mert az megkapja a teruletet
+        // amit osztályon belül megkapja
+        bool Nagyobb(double elem);
+        bool Kisebb(double elem);
     }
 }

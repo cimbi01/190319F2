@@ -6,11 +6,12 @@ namespace _190319F2
 {
     class Kor : ISikidom, IHasonlithato
     {
-        private readonly double sugar;
-        public Kor() { Beolvas(); }
-        public void Beolvas()
+        private double sugar;
+        public Kor(bool random = true) { Beolvas(random); }
+        public void Beolvas(bool random)
         {
-            double sugar = AdatBekeres.EllenorzottBekeres<double>("Add meg a Kör sugarát");
+            if(!random) this.sugar = AdatBekeres.EllenorzottBekeres<double>("Add meg a Kör sugarát");
+            else this.sugar = new Random().NextDouble() * 10;
         }
         public double Kerulet()
         {
@@ -20,19 +21,19 @@ namespace _190319F2
         {
             return Math.Pow(sugar, 2) * Math.PI;
         }
-        public bool Kisebb(int elem)
+        public bool Kisebb(double elem)
         {
-            return elem < this.Terulet();
+            return elem < Program.MIN;
         }
 
-        public bool Nagyobb(int elem)
+        public bool Nagyobb(double elem)
         {
-            return elem > this.Terulet();
+            return elem > Program.MAX;
         }
 
         public override string ToString()
         {
-            Console.WriteLine("Síkidom: {0} Kerulet: {1} Terulet: {1}", "Kör", Kerulet(), Terulet());
+            Console.WriteLine("Síkidom: {0} Kerulet: {1} Terulet: {2}", "Kör", Kerulet(), Terulet());
             return base.ToString();
         }
     }

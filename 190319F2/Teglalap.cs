@@ -6,12 +6,21 @@ namespace _190319F2
 {
     class Teglalap : ISikidom, IHasonlithato
     {
-        private readonly double oldal1, oldal2;
-        public Teglalap() { Beolvas(); }
-        public void Beolvas()
+        private double oldal1, oldal2;
+        public Teglalap(bool random = true) { Beolvas(random); }
+        public void Beolvas(bool random)
         {
-            double oldal1 = AdatBekeres.EllenorzottBekeres<double>("Add meg a téglalap egyik oldalát!");
-            double oldal2 = AdatBekeres.EllenorzottBekeres<double>("Add meg a téglalap másik oldalát!");
+            if (!random)
+            {
+                oldal1 = AdatBekeres.EllenorzottBekeres<double>("Add meg a téglalap egyik oldalát!");
+                oldal2 = AdatBekeres.EllenorzottBekeres<double>("Add meg a téglalap másik oldalát!");
+            }
+            else
+            {
+                Random rnd = new Random();
+                oldal1 = rnd.NextDouble() *10;
+                oldal2 = rnd.NextDouble() * 10;
+            }
         }
         public double Kerulet()
         {
@@ -22,18 +31,17 @@ namespace _190319F2
         {
             return (oldal1 * oldal2);
         }
-        public bool Kisebb(int elem)
+        public bool Kisebb(double elem)
         {
-            return elem < Terulet();
+            return elem < Program.MIN;
         }
-
-        public bool Nagyobb(int elem)
+        public bool Nagyobb(double elem)
         {
-            return elem < Terulet();
+            return elem > Program.MAX;
         }
         public override string ToString()
         {
-            Console.WriteLine("Síkidom: {0} Kerulet: {1} Terulet: {1}", "Téglalap", Kerulet(), Terulet());
+            Console.WriteLine("Síkidom: {0} Kerulet: {1} Terulet: {2}", "Téglalap", Kerulet(), Terulet());
             return base.ToString();
         }
     }
