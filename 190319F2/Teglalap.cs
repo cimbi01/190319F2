@@ -7,6 +7,7 @@ namespace _190319F2
     class Teglalap : ISikidom, IHasonlithato
     {
         private double oldal1, oldal2;
+        // a random megadja, hogy az adatmegadás random legyen vagy felhasználó adja meg
         public Teglalap(bool random = true) { Beolvas(random); }
         public void Beolvas(bool random)
         {
@@ -26,7 +27,6 @@ namespace _190319F2
         {
             return (oldal1 + oldal2) * 2;
         }
-
         public double Terulet()
         {
             return (oldal1 * oldal2);

@@ -9,6 +9,7 @@ namespace _190319F2
         private readonly double[] oldalak = new double[3];
         private double magassag;
         private int magassagoldalszam;
+        // a random megadja, hogy az adatmegadás random legyen vagy felhasználó adja meg
         public Haromszog(bool random = true){ this.Beolvas(random); }
         private void Beolvas(bool random)
         {
@@ -18,7 +19,6 @@ namespace _190319F2
                 oldalak[0] = rnd.NextDouble()*10;
                 oldalak[1] = rnd.NextDouble() * 10;
                 oldalak[2] = rnd.NextDouble() * 10;
-                // LEGYEN > 0 && < 4
                 magassagoldalszam = rnd.Next(1, 4);
                 magassag = rnd.NextDouble() * 10;
             }
@@ -37,7 +37,6 @@ namespace _190319F2
             double kerulet = oldalak[0] + oldalak[1] + oldalak[2];
             return kerulet;
         }
-
         public double Terulet()
         {
             double terulet = oldalak[magassagoldalszam-1] *  magassag /  2;

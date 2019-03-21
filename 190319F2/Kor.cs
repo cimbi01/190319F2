@@ -7,6 +7,7 @@ namespace _190319F2
     class Kor : ISikidom, IHasonlithato
     {
         private double sugar;
+        // a random megadja, hogy az adatmegadás random legyen vagy felhasználó adja meg
         public Kor(bool random = true) { Beolvas(random); }
         public void Beolvas(bool random)
         {
@@ -25,12 +26,10 @@ namespace _190319F2
         {
             return elem < Program.MIN;
         }
-
         public bool Nagyobb(double elem)
         {
             return elem > Program.MAX;
         }
-
         public override string ToString()
         {
             Console.WriteLine("Síkidom: {0} Kerulet: {1} Terulet: {2}", "Kör", Kerulet(), Terulet());
