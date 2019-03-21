@@ -9,7 +9,8 @@ namespace _190319F2
         private static readonly ISikidom[] sikidomok = new ISikidom[3];
         static void Main(string[] args)
         {
-            Init();
+            bool random = AdatBekeres.EldöntendoBekeres("Szeretnéd random megadni a Sikidomok adatait?\nNyomj entert, ha igen", "");
+            Init(random);
             int nagyobb = 0, kisebb = 0;
             foreach (ISikidom sikidom in sikidomok)
             {
@@ -26,12 +27,14 @@ namespace _190319F2
             Console.ReadKey();
         }
         // sikidomok letrehozasa
-        private static void Init()
+        // ha random igaz akkor random adja meg az adatokat
+        // ha hamis akkor felhasználó adja meg
+        private static void Init(bool random)
         {
             //síkidomok létrehozása
-            sikidomok[0] = new Kor(); ;
-            sikidomok[1] = new Haromszog();
-            sikidomok[2] = new Teglalap();
+            sikidomok[0] = new Kor(random); ;
+            sikidomok[1] = new Haromszog(random);
+            sikidomok[2] = new Teglalap(random);
         }
     }
 }
