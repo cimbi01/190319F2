@@ -13,7 +13,6 @@ namespace _190319F2
             int nagyobb = 0, kisebb = 0;
             foreach (ISikidom sikidom in sikidomok)
             {
-                // IHasonlithato toString-et mindig meghívja
                 IHasonlithato hasonsik = sikidom as IHasonlithato;
                 if (hasonsik.Nagyobb(sikidom.Terulet())) nagyobb++;
                 if (hasonsik.Kisebb(sikidom.Terulet())) kisebb++;
@@ -26,6 +25,7 @@ namespace _190319F2
             Console.WriteLine("Kisebb: {0}", kisebb);
             Console.ReadKey();
         }
+        // sikidomok letrehozasa
         private static void Init()
         {
             //síkidomok létrehozása
