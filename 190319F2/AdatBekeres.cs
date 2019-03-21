@@ -81,5 +81,21 @@ namespace _190319F2
                 }
             return adatkonvertált;
         }
+        // bekér egy adatot, amit addig kér amig nem double-é konvertálható
+        // és ha kisebb mint a MIN akk visszaadja, ha nem akkor meghivja újra önmagát
+        // nem lehet generikus, mert min-t és T-t nem lehet osszeegyeztetni
+        public static double EllenorzottBekeres(int MAX, int MIN = 0, string bekeroszoveg = "Add meg a bekért adatot!")
+        {
+            //bekéri adatkonvertált
+            double adatkonvertált = EllenorzottBekeres<double>(bekeroszoveg);
+            // ha kisebb mint a min akkor ujra
+            if (adatkonvertált <= MIN
+                || adatkonvertált >= MAX)
+            {
+                Console.WriteLine("A megadott adat kisebb vagy egyenlő, mint {0} vagy nagyobb mint {1}", MIN, MAX);
+                adatkonvertált = EllenorzottBekeres(MAX, MIN, bekeroszoveg);
+            }
+            return adatkonvertált;
+        }
     }
 }
