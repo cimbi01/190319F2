@@ -28,7 +28,7 @@ namespace _190319F2
                 oldalak[1] = AdatBekeres.EllenorzottBekeres<double>("Add meg a háromszög másik oldalát!");
                 oldalak[2] = AdatBekeres.EllenorzottBekeres<double>("Add meg a háromszög harmadik oldalát!");
                 // LEGYEN > 0 && < 4
-                magassagoldalszam = AdatBekeres.EllenorzottBekeres<int>("Add meg hogy a magasság amit megfogsz adni a háromszög melyik oldalához tartozik!");
+                magassagoldalszam = (int)AdatBekeres.EllenorzottBekeres(4, -1, "Add meg hogy a magasság amit megfogsz adni a háromszög melyik oldalához tartozik!");
                 magassag = AdatBekeres.EllenorzottBekeres<double>("Add meg a háromszög " + magassagoldalszam + " oldalhoz tartozó magasságát!");
             }
         }
