@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace _190319F2
+﻿namespace _190319F2
 {
-    interface ISikidom
+    internal interface ISikidom
     {
+        #region Public Methods
+
         double Kerulet();
         double Terulet();
+
+        #endregion Public Methods
     }
 }
